@@ -178,52 +178,50 @@ declare module 'astro:content' {
   slug: "5d";
   body: string;
   collection: "project";
-  data: any
+  data: InferEntrySchema<"project">
 } & { render(): Render[".md"] };
 "covid-analysis.md": {
 	id: "covid-analysis.md";
   slug: "covid-analysis";
   body: string;
   collection: "project";
-  data: any
+  data: InferEntrySchema<"project">
 } & { render(): Render[".md"] };
 "design-system-boilerplate.md": {
 	id: "design-system-boilerplate.md";
   slug: "design-system-boilerplate";
   body: string;
   collection: "project";
-  data: any
+  data: InferEntrySchema<"project">
 } & { render(): Render[".md"] };
 "dev-landing-page.md": {
 	id: "dev-landing-page.md";
   slug: "dev-landing-page";
   body: string;
   collection: "project";
-  data: any
+  data: InferEntrySchema<"project">
 } & { render(): Render[".md"] };
 "draft-project.md": {
 	id: "draft-project.md";
   slug: "draft-project";
   body: string;
   collection: "project";
-  data: any
+  data: InferEntrySchema<"project">
 } & { render(): Render[".md"] };
 "go-game.md": {
 	id: "go-game.md";
   slug: "go-game";
   body: string;
   collection: "project";
-  data: any
+  data: InferEntrySchema<"project">
 } & { render(): Render[".md"] };
 "stack.md": {
 	id: "stack.md";
   slug: "stack";
   body: string;
   collection: "project";
-  data: any
+  data: InferEntrySchema<"project">
 } & { render(): Render[".md"] };
-};
-"projects": {
 };
 
 	};
@@ -234,5 +232,5 @@ declare module 'astro:content' {
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
-	export type ContentConfig = typeof import("../src/content/config.mjs");
+	export type ContentConfig = typeof import("../src/content/config.js");
 }

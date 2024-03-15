@@ -17,6 +17,7 @@ const project = defineCollection({
 		description: z.string(),
 		date: z.coerce.date(),
     draft: z.boolean().optional(),
+    url: z.string(),
 	}),
 });
 
