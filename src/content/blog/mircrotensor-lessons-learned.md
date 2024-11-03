@@ -1,5 +1,5 @@
 ---
-title: "Microtensor lessons learned"
+title: "Lessons learned writing a deep learning library from scratch in C++"
 description: "Experiences in implementing deep learning from scratch."
 date: 'Nov 1, 2024'
 ---
