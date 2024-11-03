@@ -157,6 +157,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"mircrotensor-lessons-learned.md": {
+	id: "mircrotensor-lessons-learned.md";
+  slug: "mircrotensor-lessons-learned";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "ode-to-27.md": {
 	id: "ode-to-27.md";
   slug: "ode-to-27";
