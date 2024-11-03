@@ -215,6 +215,13 @@ declare module 'astro:content' {
   collection: "project";
   data: InferEntrySchema<"project">
 } & { render(): Render[".md"] };
+"microtensor.md": {
+	id: "microtensor.md";
+  slug: "microtensor";
+  body: string;
+  collection: "project";
+  data: InferEntrySchema<"project">
+} & { render(): Render[".md"] };
 "stack.md": {
 	id: "stack.md";
   slug: "stack";
