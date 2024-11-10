@@ -1,0 +1,72 @@
+---
+title: "You already know backpropagation"
+description: "The simplicity of the backbone of the AI revolution."
+date: 'Nov 1, 2024'
+---
+
+import InteractiveFunction from '../../components/InteractiveFunction.vue';
+
+Play with these sliders to see how the sum of two numbers changes as you adjust them:
+
+<InteractiveFunction client:load
+  inputs={
+    [
+      {name: 'a', value: 0, max: 10},
+      {name: 'b', value: 0, max: 10},
+    ]
+  }
+  output={{name: 'a + b', max: 20}}
+  func={'add'}
+  scale={20}
+/>
+
+Can you predict how the sum will change as you move the sliders?
+In particular, if you move `a` up by 1, how will the sum change?
+If you move `a` down by 1, how will the sum change?
+Similarly, if you move `b` up or down by 1, how will the sum change?
+
+This may seem trivial, but it's the essence of how you optimize (or "train") models.
+If you can predict how the output will change based on changes to the inputs,
+you then know how to adjust the inputs to get the desired output. And that, my
+friends, is all there is to the "learning" of machine learning.
+Some of the inputs to your model are adjustable (the "parameters"), while some
+are fixed as the data example you're currently trying to learn from (the "features").
+Your job is to adjust the parameters to get the desired output from the features.
+So in our addition example, let's say we wanted to learn the "add 2" function.
+We let `a` be a feature, and `b` be a parameter.
+Now we load known true examples into the system one by one.
+For example we know when `a` is 3, the output should be 5.
+For a given value of our tunable parameter `b` we examine how close the output is to
+the desired output. We then adjust `b` to make the output closer to the desired output.
+Too high? Lower `b`. Too low? Raise `b`. How did we know how to adjust `b`? We used
+the intuition we gained from the sliders above to know that if we raise `b`, the output
+will go up by the same amount, so if we're too low, we should raise `b`.
+Similarly, if we're too high, we should lower `b`. If we follow this process of guess
+and check, we will quickly arive at the correct value of `b`, which is clearly 2
+in this case.
+
+Once you have this intuition for how changes propagate forward for addition,
+you already know the basics of about half of all backpropagation in neural networks.
+
+The other half is multiplying.
+
+<InteractiveFunction client:load
+  inputs={
+    [
+      {name: 'a', value: 1, max: 5},
+      {name: 'b', value: 1, max: 5},
+    ]
+  }
+  output={{name: 'a × b', max: 25}}
+  func={'multiply'}
+  scale={20}
+/>
+
+See how the output changes as you adjust `a` and `b`?
+Unlike addition, the effect of one depends on the value of the other.
+If you raise `a`, the output goes up by the value of `b`, and vice versa.
+A bit more complex, but still intuitive.
+
+A deep neural network is just a series of many additions and
+mulitiplications chained together, along with maybe a couple other operations.
+

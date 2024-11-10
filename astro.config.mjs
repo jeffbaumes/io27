@@ -15,6 +15,7 @@ import rehypeKatex from 'rehype-katex';
   and leave it empty or use localhost URL. It won't break anything.
 */
 import mdx from "@astrojs/mdx";
+import vue from "@astrojs/vue";
 const SERVER_PORT = 3000;
 // the url to access your blog during local development
 const LOCALHOST_URL = `http://localhost:${SERVER_PORT}`;
@@ -40,7 +41,7 @@ export default defineConfig({
     config: {
       applyBaseStyles: false
     }
-  }), mdx()],
+  }), mdx(), vue()],
   markdown: {
     remarkPlugins: [remarkMath],
     rehypePlugins: [rehypeKatex]

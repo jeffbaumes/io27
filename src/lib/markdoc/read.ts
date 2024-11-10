@@ -36,7 +36,7 @@ function validateFrontmatter<T extends z.ZodTypeAny>({
     return validatedFrontmatter as z.infer<T>;
   } catch (e) {
     const errMessage = `
-      There was an error validating your frontmatter. 
+      There was an error validating your frontmatter.
       Please make sure your frontmatter for file: ${filepath} matches its schema.
     `;
     throw Error(errMessage + (e as Error).message);
@@ -81,7 +81,7 @@ export async function readOne<T extends z.ZodTypeAny>({
   slug: string;
   frontmatterSchema: T;
 }) {
-  const filepath = path.join(contentDirectory, directory, `${slug}.md`);
+  const filepath = path.join(contentDirectory, directory, `${slug}.mdx`);
   return read({
     filepath,
     schema,
@@ -96,7 +96,7 @@ export async function readAll<T extends z.ZodTypeAny>({
   frontmatterSchema: T;
 }) {
   const pathToDir = path.posix.join(contentDirectory, directory);
-  const paths = await globby(`${pathToDir}/*.md`);
+  const paths = await globby(`${pathToDir}/*.mdx`);
 
   return Promise.all(paths.map((path) => read({ filepath: path, schema })));
 }
