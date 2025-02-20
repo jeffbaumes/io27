@@ -1,0 +1,41 @@
+---
+title: "Voxel water simulation"
+description: "Simulating water with cellular automata."
+date: 'Feb 12, 2025'
+client: only
+---
+
+import WaterSimulation from '../../components/WaterSimulation.vue';
+
+I am implementing a [voxel world](https://github.com/jeffbaumes/cyclic) for fun, which I tend to do every so often.
+I want to simulate water in this world, so I started looking into how to do that.
+Instead of using Minecraft's water simulation style, in which a single water
+block can generate seemingly infinite water, I wanted a more realistic simulation where for example mass
+is conserved and water flows somewhat naturally.
+
+I found this neat 2012 [video](https://youtu.be/Q_TdeGIOOts?si=h6J4f4Y7435WEapq) of simulated water and its related
+[blog post](https://sites.google.com/site/letsmakeavoxelengine/home/water) by AlwaysGeeky.
+Going back further it seems it might have written based on this 2009 [2D Processing example](https://w-shadow.com/blog/2009/09/01/simple-fluid-simulation/), which was
+originally working online in a Java Applet, but of course that's not going to work in today's world.
+In an attempt to understand how it works, I ported the Processing code into TypeScript.
+
+To go all the way back in the provenance of this, the original idea for performing water voxel simulation
+using cellular automata was from Tom Forsyth, who wrote an [article](https://tomforsyth1000.github.io/papers/cellular_automata_for_physical_modelling.html)
+on this and other clever potential uses of cellular automata in games way back in 2001.
+
+Anyhow, on with the show. Here's the final version of the water simulation. You can play with the
+controls and edit the world by drawing on it in the various edit modes.
+The smoothing factor controls how much the water flow is dampened in the simulation.
+Near zero, it will flow very quickly but is prone to oscillations.
+Near one, it will flow very slowly but is more stable.
+
+<WaterSimulation client:load mapWidth={32} mapHeight={32} width={32*20} height={32*20} wrap={false} />
+
+As you can see, the water falls off the edges and bottom of the world.
+A simple way to fix this is to make the world wrap around, so that the left edge is
+connected to the right edge, and the top edge is connected to the bottom edge.
+This will get us perpetual water flow. It's interesting to see how the water stabilizes
+over time.
+
+<WaterSimulation client:load mapWidth={32} mapHeight={32} width={32*20} height={32*20} wrap={true} />
+

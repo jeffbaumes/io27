@@ -194,6 +194,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"water-simulation.mdx": {
+	id: "water-simulation.mdx";
+  slug: "water-simulation";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
 "you-already-know-backprop.mdx": {
 	id: "you-already-know-backprop.mdx";
   slug: "you-already-know-backprop";
@@ -213,6 +220,13 @@ declare module 'astro:content' {
 "covid-analysis.md": {
 	id: "covid-analysis.md";
   slug: "covid-analysis";
+  body: string;
+  collection: "project";
+  data: InferEntrySchema<"project">
+} & { render(): Render[".md"] };
+"cyclic.md": {
+	id: "cyclic.md";
+  slug: "cyclic";
   body: string;
   collection: "project";
   data: InferEntrySchema<"project">
@@ -248,6 +262,13 @@ declare module 'astro:content' {
 "microtensor.md": {
 	id: "microtensor.md";
   slug: "microtensor";
+  body: string;
+  collection: "project";
+  data: InferEntrySchema<"project">
+} & { render(): Render[".md"] };
+"splait.md": {
+	id: "splait.md";
+  slug: "splait";
   body: string;
   collection: "project";
   data: InferEntrySchema<"project">
