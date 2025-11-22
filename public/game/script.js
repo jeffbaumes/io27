@@ -85,9 +85,6 @@ let py = 0;
 let health = 5;
 let gameOver = false;
 
-// Turn off double tap zoom on mobile
-document.addEventListener('touchend', e => e.preventDefault(), { passive: false });
-
 function nextLevel() {
   level += 1;
   levelDiv.innerText = `Level ${level + 1}`;
