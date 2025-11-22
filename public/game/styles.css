@@ -1,7 +1,6 @@
 html {
   margin: 0;
   padding: 0;
-  touch-action: none;
 }
 
 body {
@@ -12,7 +11,6 @@ body {
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
-  touch-action: none;
 }
 
 button {
@@ -26,7 +24,7 @@ button {
   flex-direction: column;
   padding: 32px;
   width: 360px;
-  max-width: 100%;
+  max-width: 50vh;
   gap: 16px;
 }
 
