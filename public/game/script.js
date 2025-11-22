@@ -27,7 +27,7 @@ const emojiMap = {
 
 const levels = [
   {
-    message: 'Help Santa find the tree. Don\'t get too hot or too cold!',
+    message: 'Help Santa get to the Christmas tree. Don\'t get too hot or too cold!',
     board: `
  S 0 0 0 0 0
  0 0-1-1-1 0
@@ -67,6 +67,10 @@ const levelDiv = document.getElementById('level');
 const gridDiv = document.getElementById('grid');
 const messageDiv = document.getElementById('message');
 const restartButton = document.getElementById('restart');
+const upButton = document.getElementById('up');
+const downButton = document.getElementById('down');
+const leftButton = document.getElementById('left');
+const rightButton = document.getElementById('right');
 
 let level = -1;
 let board = null;
@@ -151,9 +155,9 @@ function render() {
   for (var x = 0; x < board.length; x += 1) {
     for (var y = 0; y < board[0].length; y += 1) {
       const { cell, content } = cells[x][y];
-      cell.classList.remove('wall');
+      cell.classList.remove('blank');
       if (board[x][y] === Infinity) {
-        cell.classList.add('wall');
+        cell.classList.add('blank');
       }
       const v = board[x][y];
       if (x === px && y === py) {
@@ -165,16 +169,22 @@ function render() {
       }
     }
   }
-  messageDiv.innerText = gameOver ? (health === 0 ? '🥶Too cold!🥶' : '🔥Too hot!🔥') : levels[level].message;
+  messageDiv.innerText = gameOver ? `${health === 0 ? '🥶Too cold!🥶' : '🔥Too hot!🔥'} Press 🔄 to restart` : levels[level].message;
+  const moveButtons = [upButton, downButton, leftButton, rightButton];
+  if (gameOver) {
+    moveButtons.map((button) => button.setAttribute('disabled', 'true'));
+  } else {
+    moveButtons.map((button) => button.removeAttribute('disabled'));
+  }
 }
 
-window.addEventListener('keydown', (event) => {
+function move(direction) {
   if (gameOver) {
     return;
   }
   let nx = px;
   let ny = py;
-  switch (event.key) {
+  switch (direction) {
     case 'ArrowUp':
       ny = Math.max(0, ny - 1);
       break;
@@ -204,7 +214,13 @@ window.addEventListener('keydown', (event) => {
       render();
     }
   }
-});
+}
+
+window.addEventListener('keydown', (event) => { move(event.key) });
+upButton.addEventListener('click', () => move('ArrowUp'));
+downButton.addEventListener('click', () => move('ArrowDown'));
+leftButton.addEventListener('click', () => move('ArrowLeft'));
+rightButton.addEventListener('click', () => move('ArrowRight'));
 
 nextLevel();
 render();
