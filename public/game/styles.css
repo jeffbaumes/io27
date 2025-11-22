@@ -1,32 +1,43 @@
+html {
+  margin: 0;
+  padding: 0;
+  touch-action: none;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  touch-action: none;
 }
 
 #container {
   display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#content {
-  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  padding: 32px;
+  width: 360px;
+  max-width: 100%;
   gap: 16px;
 }
 
-#header {
+#level {
+  height: 40px;
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
 }
 
 #message {
   height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #grid {
@@ -34,8 +45,6 @@ body {
   grid-template-columns: repeat(var(--cols), 1fr);
   grid-template-rows: repeat(var(--rows), 1fr);
   grid-auto-flow: column;
-  width: 400px;
-  max-width: 100%;
   gap: 2px;
 }
 
@@ -43,8 +52,6 @@ body {
   display: grid;
   grid-template-columns: repeat(var(--health-bar-length), 1fr);
   grid-template-rows: 1fr;
-  width: 400px;
-  max-width: 100%;
   gap: 2px;
 }
 
@@ -52,8 +59,6 @@ body {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  width: 300px;
-  max-width: 100%;
   gap: 2px;
 }
 

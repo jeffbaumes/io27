@@ -63,9 +63,9 @@ const levels = [
 ];
 
 const healthDiv = document.getElementById('health');
-const levelDiv = document.getElementById('level');
+const levelDiv = document.getElementById('level-text');
 const gridDiv = document.getElementById('grid');
-const messageDiv = document.getElementById('message');
+const messageDiv = document.getElementById('message-text');
 const restartButton = document.getElementById('restart');
 const upButton = document.getElementById('up');
 const downButton = document.getElementById('down');
@@ -85,8 +85,12 @@ let py = 0;
 let health = 5;
 let gameOver = false;
 
+// Turn off double tap zoom on mobile
+document.addEventListener('touchend', e => e.preventDefault(), { passive: false });
+
 function nextLevel() {
   level += 1;
+  levelDiv.innerText = `Level ${level + 1}`;
   board = transpose(levels[level].board.split('\n')
     .map((line, y) => (line.match(/.{1,2}/g) || [])
       .map((str, x) => {
