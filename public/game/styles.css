@@ -22,17 +22,23 @@ button {
   align-items: stretch;
   justify-content: flex-start;
   flex-direction: column;
-  padding: 32px;
+  padding: 16px;
   width: 360px;
   max-width: 50vh;
-  gap: 16px;
+  gap: 8px;
 }
 
 #level {
   height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+}
+
+#key {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 1fr 1fr;
+  gap: 2px;
+  max-width: 50%;
+  align-self: center;
 }
 
 #message {

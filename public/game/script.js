@@ -25,6 +25,19 @@ const emojiMap = {
   Infinity: '',
 };
 
+const template = `
+ S 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 E
+`;
+
 const levels = [
   {
     message: 'Help Santa get to the Christmas tree. Don\'t get too hot or too cold!',
@@ -39,18 +52,51 @@ const levels = [
     startHealth: 1,
   },
   {
+    message: 'It\'s cold out there',
+    board: `
+ S-1-1-1-1 1 1-1-1-1
+-1-1-1-1-1 1 1-1-1-1
+-1-1-1-1-1-1-1-1-1-1
+-1-1 1-1-1-1-1-1-1 1
+-1-1 1-1 1 1-1 1-1-1
+-1-1-1-1-1-1-1-1-1-1
+-1 1-1-1-1-1-1-1-1-1
+-1-1 1-1-1-1-1-1-1-1
+-1-1-1 1-1-1-1-1-1-1
+-1-1-1-1-1-1 1-1-1 E
+`,
+    range: 10,
+    startHealth: 5,
+  },
+  {
     message: 'Ice cubes 🧊 are colder!',
     board: `
- S 0 0 0 0 0 0 0 0 0
- 0 0 0 0 0 0 0 0 0 0
- 0 0 0 0 0 0 0 0 X-2
- 0 0 0 0 0 0 0 0 X-2
- 0 0 0 0 0 0 0 0 X-2
- 1 1 1 0 0 0 0 0 X-2
- 1 1 1 0 0 0 0 1 X E
+ S 0 0 0 0 0
+ 0 0 0 0 X-2
+ 0 0 0 0 X-2
+ 0 0 0 0 X-2
+ 1 1 1 0 X-2
+ 1 1 1 1 X E
 `,
     range: 4,
     startHealth: 2,
+  },
+  {
+    message: 'Paths',
+    board: `
+ S 0 0 0 0 0 0 0 0 0
+ 0 X X X X X X X X 0
+ 0 0 0 X 0 0 0 0 0 0
+ X X 0 X 0 X X X X 0
+-1-1 0 X 0 0 0 0 X 0
+-1 X X X X X X 0 X 0
+-1 X X X X X X 1 2-1
+-1 0 X X X X X X X X
+ 2 2 0 0 0-3-3-3 E X
+ 2 2 2 X X X X X X X
+`,
+    range: 6,
+    startHealth: 3,
   },
   {
     message: 'You win! The code is XXXXXXXX',
@@ -162,7 +208,7 @@ function render() {
       }
       const v = board[x][y];
       if (x === px && y === py) {
-        content.innerText = '🎅';
+        content.innerText = health === 0 ? '🥶' : health === levels[level].range ? '🔥' : '🎅';
       } else if (x === winX && y === winY) {
         content.innerText = '🎄';
       } else {
@@ -217,7 +263,12 @@ function move(direction) {
   }
 }
 
-window.addEventListener('keydown', (event) => { move(event.key) });
+window.addEventListener('keydown', (event) => {
+  move(event.key);
+  if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
+    event.preventDefault();
+  }
+});
 upButton.addEventListener('click', () => move('ArrowUp'));
 downButton.addEventListener('click', () => move('ArrowDown'));
 leftButton.addEventListener('click', () => move('ArrowLeft'));
