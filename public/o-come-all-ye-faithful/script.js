@@ -99,7 +99,8 @@ const levels = [
     startHealth: 3,
   },
   {
-    message: 'You win! The code is XXXXXXXX',
+    message: '🎄You win!🎄',
+    link: 'https://docs.google.com/document/d/1TK_qPU_GwCJBB69S0zJgTZ5t0vqEbASXyPahBYlUABY?usp=sharing',
     board: `
  S
 `,
@@ -117,6 +118,7 @@ const upButton = document.getElementById('up');
 const downButton = document.getElementById('down');
 const leftButton = document.getElementById('left');
 const rightButton = document.getElementById('right');
+const linkAnchor = document.getElementById('link');
 
 let level = -1;
 let board = null;
@@ -217,6 +219,12 @@ function render() {
     }
   }
   messageDiv.innerText = gameOver ? `${health === 0 ? '🥶Too cold!🥶' : '🔥Too hot!🔥'} Press 🔄 to restart` : levels[level].message;
+  if (levels[level].link) {
+    linkAnchor.setAttribute('href', levels[level].link);
+    linkAnchor.classList.remove('hidden');
+  } else {
+    linkAnchor.classList.add('hidden');
+  }
   const moveButtons = [upButton, downButton, leftButton, rightButton];
   if (gameOver) {
     moveButtons.map((button) => button.setAttribute('disabled', 'true'));
