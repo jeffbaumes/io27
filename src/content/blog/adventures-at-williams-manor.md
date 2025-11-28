@@ -4,7 +4,7 @@ description: "An unofficial Minecraft adventure."
 date: '2017-08-15'
 ---
 
-![Adventures in William's Manor - Cover](/public/adventures-in-williams-manor.jpg)
+![Adventures in William's Manor - Cover](../../assets/adventures-in-williams-manor.jpg)
 
 Austin and his Minecraft friends get more than they bargained for when they are sent away to a secluded place which is supposed to be quiet and safe. Instead, they find themselves in another world to battle evil in order to save the realm from a powerful enchantment that kept the land from ever performing an essential task: mining.Share this family-friendly, virtue-filled chapter book with the Minecraft-lover in your life who would appreciate a meaningful story with less triviality, or enjoy reading it to your younger adventurers.
 
